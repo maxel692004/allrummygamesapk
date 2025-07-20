@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpinGame - Slot & Rummy Apps Download</title>
+    <meta name="description" content="Download real money games like 365Jeet, slots, rummy & casino apps. Signup bonus up to ₹581. Withdraw easily to your UPI.">
+    <meta name="keywords" content="365jeet apk, rummy app, slot game app, spin and earn, real money earning games, UPI withdrawal games, casino india">
+    <meta name="author" content="SpinGame">
+    <meta property="og:title" content="SpinGame - Download Slots & Rummy Apps to Earn Real Money" />
+    <meta property="og:description" content="Install 365Jeet & more apps. Earn signup bonus, spin to win & withdraw via UPI." />
+    <meta property="og:image" content="https://spingame.rf.gd/assets/logo.png" />
+    <meta property="og:url" content="https://spingame.rf.gd/" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-100 text-gray-800 font-sans">
+    <!-- Header -->
+    <header class="bg-green-600 text-white p-4 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <img src="assets/logo.png" alt="Logo" class="h-10 w-10 rounded-full" />
+        <h1 class="text-xl font-bold">SpinGame</h1>
+      </div>
+      <span class="text-sm">Download & Earn Instantly</span>
+    </header>
+
+    <!-- Info strip -->
+    <div class="bg-green-100 text-green-800 p-3 text-center text-sm font-medium">
+      🎁 Signup Bonus Up to ₹581 | 🏦 Withdraw to UPI | No KYC Needed
+    </div>
+
+    <!-- App List -->
+    <main class="p-4 max-w-3xl mx-auto">
+      <div id="app-list" class="grid gap-4"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-center p-4 text-sm text-gray-600">
+      &copy; 2025 SpinGame. All rights reserved.
+      <div class="mt-2 space-x-3">
+        <a href="terms.html" class="underline">Terms</a>
+        <a href="privacy.html" class="underline">Privacy</a>
+        <a href="disclaimer.html" class="underline">Disclaimer</a>
+      </div>
+    </footer>
+
+    <!-- Script to load apps -->
+    <script>
+      fetch("data.json")
+        .then((res) => res.json())
+        .then((apps) => {
+          const list = document.getElementById("app-list");
+          apps.forEach((app) => {
+            const item = document.createElement("div");
+            item.className = "bg-white shadow-md rounded-xl p-4 flex items-center space-x-4";
+
+            item.innerHTML = `
+              <img src="assets/${app.icon}" alt="${app.name}" class="w-16 h-16 rounded-md object-cover border" />
+              <div class="flex-1">
+                <h2 class="text-lg font-semibold">${app.name}</h2>
+                <p class="text-sm text-gray-700">${app.bonus}</p>
+                <p class="text-sm text-gray-500">${app.withdrawal}</p>
+              </div>
+              <a href="${app.link}" target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded-xl">Download</a>
+            `;
+            list.appendChild(item);
+          });
+        })
+        .catch((error) => {
+          document.getElementById("app-list").innerHTML = "<p class='text-red-500'>Failed to load apps.</p>";
+          console.error("Error loading app data:", error);
+        });
+    </script>
+  </body>
+</html>
